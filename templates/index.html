@@ -47,9 +47,9 @@
                 -->
             <!-- nav bar under page title, includes contents of page-->
             <nav>
-                <div>Grilled Cheese</div>
-                <div>Cubano</div>
-                <div>Meatball Sub</div>
+                <div>Top Stories</div>
+                <div>Local</div>
+                <div>Sacramento/Davis</div>
             </nav>
             <!-- placeholder for css to create a second border under the navbar-->
             <div id="doubleBorder"></div>
@@ -61,18 +61,44 @@
                 <!-- three different columns, each containing 2 articles (sandwiches in this case)-->
                 <div id="column1">
                     <!-- 
-                        Image source: allrecipes, Made by User: Dotdash Meredith Food Studios
-                        (https://www.google.com/search?sca_esv=bf566d55456b5970&sxsrf=AHTn8zqyCuOjoFKGfT0EogDp8pVQpqZAlw:1744867964059&q=grilled+cheese+sandwich&udm=2&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBkzPWUS0OtApxR2914vrjk60CMaA0jPMd-1UByCaBk9RkR5TYqOiT6ScESjovcjoQsynwGio9lQeNPvKtMADsdHOgKXTsBgA91tNeKNFjSbE_brW7IW51QgwD7Imts9JUAWN_Y4Q-A9iZeiZpQO8aLY-LpT5IXC_ZHkuUV9st118FKahrw&sa=X&ved=2ahUKEwi22rXZq96MAxUVDDQIHeJLFZQQtKgLegQIDxAB&biw=1278&bih=1312&dpr=1#vhid=m6eG6urzCVr_5M&vssid=mosaic)
+                        Image source: New York Times search using filter: "sacramento"
+                        Thumbnail picture used for first article from search results
                         -->
-                    <!-- inserts image of sandwich-->
+                    <!-- inserts article 1 image 
+                        source is defined in the fetch call by extracting the url of the article image-->
                     <img id="unoImage" src="" alt="Article 1 image" title="pic">
-                    <!-- Title located under picture of sandwich-->
+                    <!-- Title of first article from search
+                        will show "...loading..." as information is in the process of being fetched -->
                     <div id="uno"><strong id="unoTitle">...Loading...</strong></div>
 
                     <div id="unoText">...Loading...</div>
+                    <!--
+                        week 4 discussion slides and lectures 9 & 10 slides from class - 
+                        help using nyt search api and setup/structure/usage for fetch function
+                        (https://canvas.ucdavis.edu/courses/993295/files/folder/Lab%20Materials/week%204?preview=27512103)
+                        (https://docs.google.com/presentation/d/1PROc0HjCUyOMOEiZUcKLrqo-FQO9kvez4cb09ElfSFM/edit#slide=id.g34f3b6bcb4f_0_35)
+                        (https://docs.google.com/presentation/d/1-JOfz_l8b8m_cMky4AM6cct6PX_VM0zVOKws3qqLA9Y/edit#slide=id.gd6b56daeb7_0_131)
+                        -->
+
+                    <!--
+                        nytimes developers - for help writing nyt search api queries using filters
+                        also help identifying keywords used for parsing article data such as snippet,
+                        multimedia, default, url, headline, main, etc.
+                        (https://developer.nytimes.com/docs/articlesearch-product/1/overview)
+                        (https://developer.nytimes.com/docs/articlesearch-product/1/types/Article)
+                        -->
+
+                    <!-- js script that fetches info from the nyt using their search api
+                        the nyt search api uses the "sacramento" filter to get local stories
+                        also uses our given api search key 
+                        fetches search data, parses data to extract first article (data.response.docs[0]),
+                        extract leading image from said article (article1.multimedia), 
+                        set that image url as image src (img1.src = multimedia1.default.url),
+                        extract article title (article1.headline.main) and description (article1.snippet) to be displayed onto page
+                        catch error if we weren't able to fetch any data -->
                     <script>
                         let url1 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
-            
+                        
                         fetch(url1)
                             .then(response => response.json())
                             .then(data => {
@@ -90,13 +116,12 @@
                             });
                     </script>
 
-                    <!-- Text located under picture, latin placeholder text was used-->
-                     <!--
-                        Lorem Ipsum - for generating latin placeholder text used in html page
-                        (https://loremipsum.io/generator/?n=1&t=p)
-                        -->
-                    
-                    <!-- essentially repeat the process for another sandwich located under the previous one-->
+                    <!-- essentially repeat the process for the next article from the api search
+                        which will be placed under the previous one 
+                        this is for the fourth article that appears from the search -->
+
+                    <!-- Title of first article from search
+                        will show "...loading..." as information is in the process of being fetched -->
                     <div id="quatro"><strong id="quatroTitle">...Loading...</strong></div>
 
                     <div id="quatroText">...Loading...</div>
@@ -119,10 +144,8 @@
                                 console.error('Error fetching data:', error);
                             });
                     </script>
-                    <!--
-                        Image source: Reily Products, Made by User: N/A
-                        (https://www.google.com/search?q=BLT&sca_esv=eca5bc19763b5d0c&udm=2&biw=1278&bih=1312&sxsrf=AHTn8zrHqOUOgcd7EaS-UKFyR0Tb8XGh8Q%3A1744773494858&ei=diH_Z5SANI2F0PEPk_6BuQg&ved=0ahUKEwiUk__iy9uMAxWNAjQIHRN_IIcQ4dUDCBE&uact=5&oq=BLT&gs_lp=EgNpbWciA0JMVDIKEAAYgAQYQxiKBTINEAAYgAQYsQMYQxiKBTINEAAYgAQYsQMYQxiKBTIIEAAYgAQYsQMyCBAAGIAEGLEDMgUQABiABDIIEAAYgAQYsQMyCBAAGIAEGLEDMgUQABiABDIFEAAYgARIlxpQlApYghFwAXgAkAEAmAFCoAG7AaoBATO4AQPIAQD4AQGYAgSgAssBqAIKwgIKECMYJxjJAhjqAsICBxAjGCcYyQLCAgsQABiABBixAxiDAZgDBJIHATSgB6oSsgcBM7gHxwE&sclient=img#vhid=WlfGPTodhJAj5M&vssid=mosaic)
-                        -->
+                    <!-- inserts article 4 image 
+                        source is defined in the fetch call by extracting the url of the article image-->
                     <img id="quatroImage" src="" alt="Article 4 image" title="pic">
                 </div>
                 <!-- repeat process for columns 2 and three-->
@@ -149,15 +172,11 @@
                                 console.error('Error fetching data:', error);
                             });
                     </script>
-                    <!--
-                        Image source: Food and Wine, Made by User: Matt Taylor-Gross
-                        (https://www.google.com/search?sca_esv=bf566d55456b5970&sxsrf=AHTn8zo-XII1BiJ2w8aWgIk0_cEk6tlng:1744868735430&q=cuban+sandwich&udm=2&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBsxayPSIAqObp_AgjkUGqengxVrJ7hrmYmz7X2OZp_NI3BkJIkjQUIfCSVUgD1ZXcYNwY5TEUycvG7sZ_FtLINyZtEYir0QpLsZE8Ew8mr0bMt3tNLEFCTRs8WekazCnQTUYyCDd4wRx9CQdyMaUtnZs5vqh6LqbjNoawPUH7XrJm2vpAg&sa=X&ved=2ahUKEwiW9Z3Jrt6MAxVdNzQIHUTtDYwQtKgLegQIHRAB&biw=1278&bih=612&dpr=1#vhid=BK8F1_dUxL4zkM&vssid=mosaic)
-                        -->
+                    <!-- inserts article 2 image 
+                        source is defined in the fetch call by extracting the url of the article image-->
                     <img id="dosImage" src="" alt="Article 2 image" title="pic">
-                    <!--
-                        Image source: Striped Spatula, Made by User: Amanda Biddle
-                        (https://www.google.com/search?q=reuben+sandwich&sca_esv=d4547c19e529b35e&udm=2&biw=1278&bih=1312&sxsrf=AHTn8zoyP53m1_g_n-DGnQIDEiIO4vZzCA%3A1744851385430&ei=uVEAaMf2Gce20PEP8faXoQs&oq=reuben&gs_lp=EgNpbWciBnJldWJlbioCCAAyDRAAGIAEGLEDGEMYigUyCBAAGIAEGLEDMgoQABiABBhDGIoFMgoQABiABBhDGIoFMggQABiABBixAzIKEAAYgAQYQxiKBTIKEAAYgAQYQxiKBTIFEAAYgAQyChAAGIAEGEMYigUyBRAAGIAESOsmUP0GWMYNcAF4AJABAJgBRKAB-wKqAQE2uAEByAEA-AEBmAIHoAKgA6gCCsICChAjGCcYyQIY6gLCAgcQIxgnGMkCwgILEAAYgAQYsQMYgwHCAg4QABiABBixAxiDARiKBZgDA5IHATegB-0msgcBNrgHnQM&sclient=img#vhid=AnxidUQ2FWEwXM&vssid=mosaic)
-                        -->
+                    <!-- inserts article 5 image 
+                        source is defined in the fetch call by extracting the url of the article image-->
                     <img id="cincoImage" src="" alt="Article 5 image" title="pic 5">
                     <div id="cinco"><strong id="cincoTitle">...Loading...</strong></div>
     
@@ -183,10 +202,8 @@
                     </script>
                 </div>
                 <div id="column3">
-                    <!--
-                        Image source: ChainBaker, Made by User: N/A
-                        (https://www.google.com/search?sca_esv=bf566d55456b5970&sxsrf=AHTn8zrDaLO14fRzXHnfptXKliQaprwGAQ:1744869075234&q=meatball+sub&udm=2&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBsxayPSIAqObp_AgjkUGqengxVrJ7hrmYmz7X2OZp_NIYfhIAjPnSJLO3GH6L0gKvsMx863yWAECACzcq28K_xbJJoPcSEvdLSYBoilrVRznyvhgudvug19AweeEbrCGkt1-WOOEb9EGKHZMjwGgxB85lVM932Nv9pb4lgel1ps0RGcIKA&sa=X&ved=2ahUKEwi3uKLrr96MAxX8weYEHdQgKWMQtKgLegQIDhAB&biw=1278&bih=612&dpr=1#vhid=bX8BIM9xfNTe-M&vssid=mosaic)
-                        -->
+                    <!-- inserts article 3 image 
+                        source is defined in the fetch call by extracting the url of the article image-->
                     <img id="tresImage" src="" alt="Article 3 image" title="pic 3">
                     <div id="tres"><strong id="tresTitle">...Loading...</strong></div>
 
@@ -233,10 +250,8 @@
                                 console.error('Error fetching data:', error);
                             });
                     </script>
-                    <!--
-                        Image source: Pinterest, Made by User: RecipeTin Eats
-                        (https://www.pinterest.com/pin/420031102763746202/)
-                        -->
+                    <!-- inserts article 6 image 
+                        source is defined in the fetch call by extracting the url of the article image-->
                     <img id="seisImage" src="" alt="Article 6 image" title="pic">
                 </div>
             </div>
