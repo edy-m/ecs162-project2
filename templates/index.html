@@ -104,9 +104,12 @@
                         extract article title (article1.headline.main) and description (article1.snippet) to be displayed onto page
                         catch error if we weren't able to fetch any data -->
                     <script>
-                        let url1 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
-                        
-                        fetch(url1)
+                        fetch('/api/key')
+                        .then(response => response.json())
+                        .then(data => {
+                            const keyy = data.apiKey;
+                            url1 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=' + keyy;
+                            fetch(url1)
                             .then(response => response.json())
                             .then(data => {
                                 const article1 = data.response.docs[0];
@@ -121,6 +124,10 @@
                             .catch(error => {
                                 console.error('Error fetching data:', error);
                             });
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
                     </script>
 
                     <!-- essentially repeat the process for the next article from the api search
@@ -133,9 +140,12 @@
 
                     <div id="quatroText">...Loading...</div>
                     <script>
-                        let url4 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
-            
-                        fetch(url4)
+                        fetch('/api/key')
+                        .then(response => response.json())
+                        .then(data => {
+                            const keyy = data.apiKey;
+                            url4 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=' + keyy;
+                            fetch(url4)
                             .then(response => response.json())
                             .then(data => {
                                 const article4 = data.response.docs[3];
@@ -150,6 +160,10 @@
                             .catch(error => {
                                 console.error('Error fetching data:', error);
                             });
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
                     </script>
                     <!--
                         Image source: Reily Products, Made by User: N/A
@@ -166,9 +180,12 @@
 
                     <div id="dosText">...Loading...</div>
                     <script>
-                        let url2 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
-                
-                        fetch(url2)
+                        fetch('/api/key')
+                        .then(response => response.json())
+                        .then(data => {
+                            const keyy = data.apiKey;
+                            url2 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=' + keyy;
+                            fetch(url2)
                             .then(response => response.json())
                             .then(data => {
                                 const article2 = data.response.docs[1];
@@ -183,6 +200,10 @@
                             .catch(error => {
                                 console.error('Error fetching data:', error);
                             });
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
                     </script>
                     <!--
                         Image source: Food and Wine, Made by User: Matt Taylor-Gross
@@ -205,9 +226,12 @@
     
                     <div id="cincoText">...Loading...</div>
                     <script>
-                        let url5 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
-                
-                        fetch(url5)
+                        fetch('/api/key')
+                        .then(response => response.json())
+                        .then(data => {
+                            const keyy = data.apiKey;
+                            url5 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=' + keyy;
+                            fetch(url5)
                             .then(response => response.json())
                             .then(data => {
                                 const article5 = data.response.docs[4];
@@ -222,6 +246,10 @@
                             .catch(error => {
                                 console.error('Error fetching data:', error);
                             });
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
                     </script>
                 </div>
                 <div id="column3">
@@ -237,9 +265,12 @@
 
                     <div id="tresText">...Loading...</div>
                     <script>
-                        let url3 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
-            
-                        fetch(url3)
+                        fetch('/api/key')
+                        .then(response => response.json())
+                        .then(data => {
+                            const keyy = data.apiKey;
+                            url3 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=' + keyy;
+                            fetch(url3)
                             .then(response => response.json())
                             .then(data => {
                                 const article3 = data.response.docs[2];
@@ -254,15 +285,22 @@
                             .catch(error => {
                                 console.error('Error fetching data:', error);
                             });
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
                     </script>
 
                     <div id="seis"><strong id="seisTitle">...Loading...</strong></div>
 
                     <div id="seisText">...Loading...</div>
                     <script>
-                        let url6 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
-
-                        fetch(url6)
+                        fetch('/api/key')
+                        .then(response => response.json())
+                        .then(data => {
+                            const keyy = data.apiKey;
+                            url6 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=' + keyy;
+                            fetch(url6)
                             .then(response => response.json())
                             .then(data => {
                                 const article6 = data.response.docs[5];
@@ -277,6 +315,10 @@
                             .catch(error => {
                                 console.error('Error fetching data:', error);
                             });
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                        });
                     </script>
                     <!--
                         Image source: Pinterest, Made by User: RecipeTin Eats
