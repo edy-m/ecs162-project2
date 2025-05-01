@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ca">
+    <!--
+        lecture 2 and 3 slides from class - syntax, formatting, and general structure for implementing html
+        and css functionality
+        (https://docs.google.com/presentation/d/e/2PACX-1vTG2mKIEEt7XfsP2XXNA1sD0Wgfyo1oX4fYFq62qWs1ZgmxS0LRIx6gomeEBpVTLG6EDytbMdwyXpHu/pub?start=false&loop=false&delayms=3000&slide=id.g94d7922f30_0_70)
+        (https://docs.google.com/presentation/d/e/2PACX-1vR8fpanvQrI3JnGPNx8Je1xK8vUYkdLTJa6RsL_oOPQN7zXyllZn6ddanvaf65QxwcpoYIKvU8HKcSs/pub?start=false&loop=false&delayms=3000&slide=id.g3470a501663_0_116)
+        -->
+    <head>
+        <meta charset="UTF-8">
+        <!-- link css and html-->
+        <link rel="stylesheet" href="styles.css">
+        <!--
+            w3schools - for help implementing meta tag that allows for viewport control,
+            single column implementation for small screens wouldn't work without this
+            (https://www.w3schools.com/css/css_rwd_viewport.asp)
+            -->
+        <!-- Allow for device scaling-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edy's NY Times Page</title>
+    </head>
+    <body>
+        <header>
+            <!-- header (h1) includes ny times label, date/time, nav bar-->
+            <div id="h1">
+                <div id="date"></div>
+                <!--
+                    SheCodes - for syntax and js functions needed to implement the current date/time 
+                    using a js script
+                    (https://www.shecodes.io/athena/72750-how-to-inject-current-day-and-time-into-html)
+                    -->
+                <!-- js script that updates date/time to current-->
+                <script>
+                    //create date/time variable
+                    var now = new Date();
+                    var date = now.toLocaleString();
+                    //write onto page
+                    document.getElementById("date").innerHTML = date;
+                  </script>
+                <div id="title">The New York Times</div>
+                <!-- unused third flex box, keeps title centered-->
+                <div id="blank"></div>
+            </div>
+            <!--
+                w3schools - for syntax and strategy for implementing nav section within a header
+                (https://www.w3schools.com/css/css_navbar.asp)
+                -->
+            <!-- nav bar under page title, includes contents of page-->
+            <nav>
+                <div>Grilled Cheese</div>
+                <div>Cubano</div>
+                <div>Meatball Sub</div>
+            </nav>
+            <!-- placeholder for css to create a second border under the navbar-->
+            <div id="doubleBorder"></div>
+        </header>
+        <main>
+            <!-- main (h2) contains content like pictures, titles, paragraphs and borders to
+             mimic the ny times front page -->
+            <div id="h2">
+                <!-- three different columns, each containing 2 articles (sandwiches in this case)-->
+                <div id="column1">
+                    <!-- 
+                        Image source: allrecipes, Made by User: Dotdash Meredith Food Studios
+                        (https://www.google.com/search?sca_esv=bf566d55456b5970&sxsrf=AHTn8zqyCuOjoFKGfT0EogDp8pVQpqZAlw:1744867964059&q=grilled+cheese+sandwich&udm=2&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBkzPWUS0OtApxR2914vrjk60CMaA0jPMd-1UByCaBk9RkR5TYqOiT6ScESjovcjoQsynwGio9lQeNPvKtMADsdHOgKXTsBgA91tNeKNFjSbE_brW7IW51QgwD7Imts9JUAWN_Y4Q-A9iZeiZpQO8aLY-LpT5IXC_ZHkuUV9st118FKahrw&sa=X&ved=2ahUKEwi22rXZq96MAxUVDDQIHeJLFZQQtKgLegQIDxAB&biw=1278&bih=1312&dpr=1#vhid=m6eG6urzCVr_5M&vssid=mosaic)
+                        -->
+                    <!-- inserts image of sandwich-->
+                    <img id="unoImage" src="" alt="Article 1 image" title="pic">
+                    <!-- Title located under picture of sandwich-->
+                    <div id="uno"><strong id="unoTitle">...Loading...</strong></div>
+
+                    <div id="unoText">...Loading...</div>
+                    <script>
+                        let url1 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
+            
+                        fetch(url1)
+                            .then(response => response.json())
+                            .then(data => {
+                                const article1 = data.response.docs[0];
+                                const multimedia1 = article1.multimedia;
+                                const img1 = document.getElementById('unoImage');
+                                img1.src = multimedia1.default.url;
+                                const title1 = article1.headline.main;
+                                const snippet1 = article1.snippet;
+                                document.getElementById('unoTitle').textContent = title1;
+                                document.getElementById('unoText').textContent = snippet1;
+                            })
+                            .catch(error => {
+                                console.error('Error fetching data:', error);
+                            });
+                    </script>
+
+                    <!-- Text located under picture, latin placeholder text was used-->
+                     <!--
+                        Lorem Ipsum - for generating latin placeholder text used in html page
+                        (https://loremipsum.io/generator/?n=1&t=p)
+                        -->
+                    
+                    <!-- essentially repeat the process for another sandwich located under the previous one-->
+                    <div id="quatro"><strong id="quatroTitle">...Loading...</strong></div>
+
+                    <div id="quatroText">...Loading...</div>
+                    <script>
+                        let url4 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
+            
+                        fetch(url4)
+                            .then(response => response.json())
+                            .then(data => {
+                                const article4 = data.response.docs[3];
+                                const multimedia4 = article4.multimedia;
+                                const img4 = document.getElementById('quatroImage');
+                                img4.src = multimedia4.default.url;
+                                const title4 = article4.headline.main;
+                                const snippet4 = article4.snippet;
+                                document.getElementById('quatroTitle').textContent = title4;
+                                document.getElementById('quatroText').textContent = snippet4;
+                            })
+                            .catch(error => {
+                                console.error('Error fetching data:', error);
+                            });
+                    </script>
+                    <!--
+                        Image source: Reily Products, Made by User: N/A
+                        (https://www.google.com/search?q=BLT&sca_esv=eca5bc19763b5d0c&udm=2&biw=1278&bih=1312&sxsrf=AHTn8zrHqOUOgcd7EaS-UKFyR0Tb8XGh8Q%3A1744773494858&ei=diH_Z5SANI2F0PEPk_6BuQg&ved=0ahUKEwiUk__iy9uMAxWNAjQIHRN_IIcQ4dUDCBE&uact=5&oq=BLT&gs_lp=EgNpbWciA0JMVDIKEAAYgAQYQxiKBTINEAAYgAQYsQMYQxiKBTINEAAYgAQYsQMYQxiKBTIIEAAYgAQYsQMyCBAAGIAEGLEDMgUQABiABDIIEAAYgAQYsQMyCBAAGIAEGLEDMgUQABiABDIFEAAYgARIlxpQlApYghFwAXgAkAEAmAFCoAG7AaoBATO4AQPIAQD4AQGYAgSgAssBqAIKwgIKECMYJxjJAhjqAsICBxAjGCcYyQLCAgsQABiABBixAxiDAZgDBJIHATSgB6oSsgcBM7gHxwE&sclient=img#vhid=WlfGPTodhJAj5M&vssid=mosaic)
+                        -->
+                    <img id="quatroImage" src="" alt="Article 4 image" title="pic">
+                </div>
+                <!-- repeat process for columns 2 and three-->
+                <div id="column2">
+                    <div id="dos"><strong>Cubano</strong></div>
+                    <div id="dosText">
+                        <em>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex 
+                            sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. 
+                            Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus
+                            bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. 
+                            Ut hendrerit semper vel class aptent taciti sociosqu. 
+                            Ad litora torquent per conubia nostra inceptos himenaeos.</em>
+                    </div>
+                    <!--
+                        Image source: Food and Wine, Made by User: Matt Taylor-Gross
+                        (https://www.google.com/search?sca_esv=bf566d55456b5970&sxsrf=AHTn8zo-XII1BiJ2w8aWgIk0_cEk6tlng:1744868735430&q=cuban+sandwich&udm=2&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBsxayPSIAqObp_AgjkUGqengxVrJ7hrmYmz7X2OZp_NI3BkJIkjQUIfCSVUgD1ZXcYNwY5TEUycvG7sZ_FtLINyZtEYir0QpLsZE8Ew8mr0bMt3tNLEFCTRs8WekazCnQTUYyCDd4wRx9CQdyMaUtnZs5vqh6LqbjNoawPUH7XrJm2vpAg&sa=X&ved=2ahUKEwiW9Z3Jrt6MAxVdNzQIHUTtDYwQtKgLegQIHRAB&biw=1278&bih=612&dpr=1#vhid=BK8F1_dUxL4zkM&vssid=mosaic)
+                        -->
+                    <img id="cubano" src="/static/assets/cubanSandwichPic.jpg" alt="A cuban sandwich" title="pic2">
+                    <!--
+                        Image source: Striped Spatula, Made by User: Amanda Biddle
+                        (https://www.google.com/search?q=reuben+sandwich&sca_esv=d4547c19e529b35e&udm=2&biw=1278&bih=1312&sxsrf=AHTn8zoyP53m1_g_n-DGnQIDEiIO4vZzCA%3A1744851385430&ei=uVEAaMf2Gce20PEP8faXoQs&oq=reuben&gs_lp=EgNpbWciBnJldWJlbioCCAAyDRAAGIAEGLEDGEMYigUyCBAAGIAEGLEDMgoQABiABBhDGIoFMgoQABiABBhDGIoFMggQABiABBixAzIKEAAYgAQYQxiKBTIKEAAYgAQYQxiKBTIFEAAYgAQyChAAGIAEGEMYigUyBRAAGIAESOsmUP0GWMYNcAF4AJABAJgBRKAB-wKqAQE2uAEByAEA-AEBmAIHoAKgA6gCCsICChAjGCcYyQIY6gLCAgcQIxgnGMkCwgILEAAYgAQYsQMYgwHCAg4QABiABBixAxiDARiKBZgDA5IHATegB-0msgcBNrgHnQM&sclient=img#vhid=AnxidUQ2FWEwXM&vssid=mosaic)
+                        -->
+                        <img id="cincoImage" src="" alt="Article 5 image" title="pic 5">
+                        <div id="cinco"><strong id="cincoTitle">...Loading...</strong></div>
+    
+                        <div id="cincoText">...Loading...</div>
+                        <script>
+                            let url5 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
+                
+                            fetch(url5)
+                                .then(response => response.json())
+                                .then(data => {
+                                    const article5 = data.response.docs[4];
+                                    const multimedia5 = article5.multimedia;
+                                    const img5 = document.getElementById('cincoImage');
+                                    img5.src = multimedia5.default.url;
+                                    const title5 = article5.headline.main;
+                                    const snippet5 = article5.snippet;
+                                    document.getElementById('cincoTitle').textContent = title5;
+                                    document.getElementById('cincoText').textContent = snippet5;
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching data:', error);
+                                });
+                        </script>
+                </div>
+                <div id="column3">
+                    <!--
+                        Image source: ChainBaker, Made by User: N/A
+                        (https://www.google.com/search?sca_esv=bf566d55456b5970&sxsrf=AHTn8zrDaLO14fRzXHnfptXKliQaprwGAQ:1744869075234&q=meatball+sub&udm=2&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBsxayPSIAqObp_AgjkUGqengxVrJ7hrmYmz7X2OZp_NIYfhIAjPnSJLO3GH6L0gKvsMx863yWAECACzcq28K_xbJJoPcSEvdLSYBoilrVRznyvhgudvug19AweeEbrCGkt1-WOOEb9EGKHZMjwGgxB85lVM932Nv9pb4lgel1ps0RGcIKA&sa=X&ved=2ahUKEwi3uKLrr96MAxX8weYEHdQgKWMQtKgLegQIDhAB&biw=1278&bih=612&dpr=1#vhid=bX8BIM9xfNTe-M&vssid=mosaic)
+                        -->
+                    <img id="tresImage" src="" alt="Article 3 image" title="pic 3">
+                    <div id="tres"><strong id="tresTitle">...Loading...</strong></div>
+
+                    <div id="tresText">...Loading...</div>
+                    <script>
+                        let url3 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
+            
+                        fetch(url3)
+                            .then(response => response.json())
+                            .then(data => {
+                                const article3 = data.response.docs[2];
+                                const multimedia3 = article3.multimedia;
+                                const img3 = document.getElementById('tresImage');
+                                img3.src = multimedia3.default.url;
+                                const title3 = article3.headline.main;
+                                const snippet3 = article3.snippet;
+                                document.getElementById('tresTitle').textContent = title3;
+                                document.getElementById('tresText').textContent = snippet3;
+                            })
+                            .catch(error => {
+                                console.error('Error fetching data:', error);
+                            });
+                    </script>
+
+                    <div id="six"><strong>Banh Mi</strong></div>
+                    <div id="sixText">
+                        <em>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex 
+                            sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. 
+                            Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus
+                            bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. 
+                            Ut hendrerit semper vel class aptent taciti sociosqu. 
+                            Ad litora torquent per conubia nostra inceptos himenaeos.</em>
+                    </div>
+                    <!--
+                        Image source: Pinterest, Made by User: RecipeTin Eats
+                        (https://www.pinterest.com/pin/420031102763746202/)
+                        -->
+                    <img id="banhMi" src="/static/assets/banhMiPic.jpg" alt="A vietnamese Banh Mi sandwich" title="pic6">
+                </div>
+            </div>
+        </main>
+        <footer>
+            <!-- footer simply contains three flex boxes to mimic the actual ny times footer links-->
+            <div>Contact</div>
+            <div>Help</div>
+            <div>Terms of Service</div>
+        </footer>
+    </body>
+</html>
