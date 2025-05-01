@@ -127,47 +127,60 @@
                 </div>
                 <!-- repeat process for columns 2 and three-->
                 <div id="column2">
-                    <div id="dos"><strong>Cubano</strong></div>
-                    <div id="dosText">
-                        <em>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex 
-                            sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. 
-                            Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus
-                            bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. 
-                            Ut hendrerit semper vel class aptent taciti sociosqu. 
-                            Ad litora torquent per conubia nostra inceptos himenaeos.</em>
-                    </div>
+                    <div id="dos"><strong id="dosTitle">...Loading...</strong></div>
+
+                    <div id="dosText">...Loading...</div>
+                    <script>
+                        let url2 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
+                
+                        fetch(url2)
+                            .then(response => response.json())
+                            .then(data => {
+                                const article2 = data.response.docs[1];
+                                const multimedia2 = article2.multimedia;
+                                const img2 = document.getElementById('dosImage');
+                                img2.src = multimedia2.default.url;
+                                const title2 = article2.headline.main;
+                                const snippet2 = article2.snippet;
+                                document.getElementById('dosTitle').textContent = title2;
+                                document.getElementById('dosText').textContent = snippet2;
+                            })
+                            .catch(error => {
+                                console.error('Error fetching data:', error);
+                            });
+                    </script>
                     <!--
                         Image source: Food and Wine, Made by User: Matt Taylor-Gross
                         (https://www.google.com/search?sca_esv=bf566d55456b5970&sxsrf=AHTn8zo-XII1BiJ2w8aWgIk0_cEk6tlng:1744868735430&q=cuban+sandwich&udm=2&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBsxayPSIAqObp_AgjkUGqengxVrJ7hrmYmz7X2OZp_NI3BkJIkjQUIfCSVUgD1ZXcYNwY5TEUycvG7sZ_FtLINyZtEYir0QpLsZE8Ew8mr0bMt3tNLEFCTRs8WekazCnQTUYyCDd4wRx9CQdyMaUtnZs5vqh6LqbjNoawPUH7XrJm2vpAg&sa=X&ved=2ahUKEwiW9Z3Jrt6MAxVdNzQIHUTtDYwQtKgLegQIHRAB&biw=1278&bih=612&dpr=1#vhid=BK8F1_dUxL4zkM&vssid=mosaic)
                         -->
-                    <img id="cubano" src="/static/assets/cubanSandwichPic.jpg" alt="A cuban sandwich" title="pic2">
+                    <img id="dosImage" src="" alt="Article 2 image" title="pic">
                     <!--
                         Image source: Striped Spatula, Made by User: Amanda Biddle
                         (https://www.google.com/search?q=reuben+sandwich&sca_esv=d4547c19e529b35e&udm=2&biw=1278&bih=1312&sxsrf=AHTn8zoyP53m1_g_n-DGnQIDEiIO4vZzCA%3A1744851385430&ei=uVEAaMf2Gce20PEP8faXoQs&oq=reuben&gs_lp=EgNpbWciBnJldWJlbioCCAAyDRAAGIAEGLEDGEMYigUyCBAAGIAEGLEDMgoQABiABBhDGIoFMgoQABiABBhDGIoFMggQABiABBixAzIKEAAYgAQYQxiKBTIKEAAYgAQYQxiKBTIFEAAYgAQyChAAGIAEGEMYigUyBRAAGIAESOsmUP0GWMYNcAF4AJABAJgBRKAB-wKqAQE2uAEByAEA-AEBmAIHoAKgA6gCCsICChAjGCcYyQIY6gLCAgcQIxgnGMkCwgILEAAYgAQYsQMYgwHCAg4QABiABBixAxiDARiKBZgDA5IHATegB-0msgcBNrgHnQM&sclient=img#vhid=AnxidUQ2FWEwXM&vssid=mosaic)
                         -->
-                        <img id="cincoImage" src="" alt="Article 5 image" title="pic 5">
-                        <div id="cinco"><strong id="cincoTitle">...Loading...</strong></div>
+                    <img id="cincoImage" src="" alt="Article 5 image" title="pic 5">
+                    <div id="cinco"><strong id="cincoTitle">...Loading...</strong></div>
     
-                        <div id="cincoText">...Loading...</div>
-                        <script>
-                            let url5 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
+                    <div id="cincoText">...Loading...</div>
+                    <script>
+                        let url5 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
                 
-                            fetch(url5)
-                                .then(response => response.json())
-                                .then(data => {
-                                    const article5 = data.response.docs[4];
-                                    const multimedia5 = article5.multimedia;
-                                    const img5 = document.getElementById('cincoImage');
-                                    img5.src = multimedia5.default.url;
-                                    const title5 = article5.headline.main;
-                                    const snippet5 = article5.snippet;
-                                    document.getElementById('cincoTitle').textContent = title5;
-                                    document.getElementById('cincoText').textContent = snippet5;
-                                })
-                                .catch(error => {
-                                    console.error('Error fetching data:', error);
-                                });
-                        </script>
+                        fetch(url5)
+                            .then(response => response.json())
+                            .then(data => {
+                                const article5 = data.response.docs[4];
+                                const multimedia5 = article5.multimedia;
+                                const img5 = document.getElementById('cincoImage');
+                                img5.src = multimedia5.default.url;
+                                const title5 = article5.headline.main;
+                                const snippet5 = article5.snippet;
+                                document.getElementById('cincoTitle').textContent = title5;
+                                document.getElementById('cincoText').textContent = snippet5;
+                            })
+                            .catch(error => {
+                                console.error('Error fetching data:', error);
+                            });
+                    </script>
                 </div>
                 <div id="column3">
                     <!--
@@ -198,20 +211,33 @@
                             });
                     </script>
 
-                    <div id="six"><strong>Banh Mi</strong></div>
-                    <div id="sixText">
-                        <em>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex 
-                            sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. 
-                            Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus
-                            bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. 
-                            Ut hendrerit semper vel class aptent taciti sociosqu. 
-                            Ad litora torquent per conubia nostra inceptos himenaeos.</em>
-                    </div>
+                    <div id="seis"><strong id="seisTitle">...Loading...</strong></div>
+
+                    <div id="seisText">...Loading...</div>
+                    <script>
+                        let url6 = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=sacramento&api-key=LwRGjUYN8Phbf9LXDJZmzm7Ab99CQmke'
+
+                        fetch(url6)
+                            .then(response => response.json())
+                            .then(data => {
+                                const article6 = data.response.docs[5];
+                                const multimedia6 = article6.multimedia;
+                                const img6 = document.getElementById('seisImage');
+                                img6.src = multimedia6.default.url;
+                                const title6 = article6.headline.main;
+                                const snippet6 = article6.snippet;
+                                document.getElementById('seisTitle').textContent = title6;
+                                document.getElementById('seisText').textContent = snippet6;
+                            })
+                            .catch(error => {
+                                console.error('Error fetching data:', error);
+                            });
+                    </script>
                     <!--
                         Image source: Pinterest, Made by User: RecipeTin Eats
                         (https://www.pinterest.com/pin/420031102763746202/)
                         -->
-                    <img id="banhMi" src="/static/assets/banhMiPic.jpg" alt="A vietnamese Banh Mi sandwich" title="pic6">
+                    <img id="seisImage" src="" alt="Article 6 image" title="pic">
                 </div>
             </div>
         </main>

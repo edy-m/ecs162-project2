@@ -100,7 +100,7 @@ nav {       /* formats nav bar list into flex format in an evenly spaced row*/
     padding-top: 20px;
 }
 
-#cubano {       /* accesses the cubano sandwich picture to make sure a border is placed underneath, but not for the reuben picture*/
+#dosImage {       /* accesses the cubano sandwich picture to make sure a border is placed underneath, but not for the reuben picture*/
     padding-bottom: 20px;
     border-bottom: solid black;
     border-width: thin;
@@ -171,18 +171,18 @@ nav {       /* formats nav bar list into flex format in an evenly spaced row*/
     padding-bottom: 20px;
 }
 
-#six strong {   /* center banh mi title under picture*/
+#seis strong {   /* center banh mi title under picture*/
     display: flex;
     justify-content: center;
     font-size: 30px;
     padding: 10px;
 }
 
-#sixText {  /* change text color to greyish*/
+#seisText {  /* change text color to greyish*/
     color: rgb(80, 80, 80);
 }
 
-#banhMi {   /*add border underneath banh mi picture and format*/
+#seisImage {   /*add border underneath banh mi picture and format*/
     border-bottom: solid black;
     border-width: thin;
     
