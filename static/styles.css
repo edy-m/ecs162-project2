@@ -74,7 +74,7 @@ nav {       /* formats nav bar list into flex format in an evenly spaced row*/
     padding: 10px;
 }
 
-#uno strong {   /* center grilled cheese title under picture*/
+#uno strong {   /* center article 1 title under picture*/
     display: flex;
     justify-content: center;
     font-size: 30px;
@@ -100,13 +100,13 @@ nav {       /* formats nav bar list into flex format in an evenly spaced row*/
     padding-top: 20px;
 }
 
-#dosImage {       /* accesses the cubano sandwich picture to make sure a border is placed underneath, but not for the reuben picture*/
+#dosImage {       /* accesses the article 2 picture to make sure a border is placed underneath, but not for the article 5 picture*/
     padding-bottom: 20px;
     border-bottom: solid black;
     border-width: thin;
 }
 
-#dos strong {   /* center cubano title under picture*/
+#dos strong {   /* center article 2 title under picture*/
     display: flex;
     justify-content: center;
     font-size: 30px;
@@ -127,7 +127,7 @@ nav {       /* formats nav bar list into flex format in an evenly spaced row*/
     padding: 10px;
 }
 
-#tres strong {  /* center meatball sub title under picture*/
+#tres strong {  /* center article 3 title under picture*/
     display: flex;
     justify-content: center;
     font-size: 30px;
@@ -141,14 +141,14 @@ nav {       /* formats nav bar list into flex format in an evenly spaced row*/
     padding-bottom: 20px;
 }
 
-#quatro strong {  /* center blt title under picture*/
+#quatro strong {  /* center article 4 title under picture*/
     display: flex;
     justify-content: center;
     font-size: 30px;
     padding: 10px;
 }
 
-#quatroImage {  /*add border underneath blt picture and format*/
+#quatroImage {  /*add border underneath article 4 picture and format*/
     border-bottom: solid black;
     border-width: thin;
 }
@@ -157,7 +157,7 @@ nav {       /* formats nav bar list into flex format in an evenly spaced row*/
     color: rgb(80, 80, 80);
 }
 
-#cinco strong {  /* center reuben title under picture*/
+#cinco strong {  /* center article 5 title under picture*/
     display: flex;
     justify-content: center;
     font-size: 30px;
@@ -171,7 +171,7 @@ nav {       /* formats nav bar list into flex format in an evenly spaced row*/
     padding-bottom: 20px;
 }
 
-#seis strong {   /* center banh mi title under picture*/
+#seis strong {   /* center article 6 title under picture*/
     display: flex;
     justify-content: center;
     font-size: 30px;
@@ -182,7 +182,7 @@ nav {       /* formats nav bar list into flex format in an evenly spaced row*/
     color: rgb(80, 80, 80);
 }
 
-#seisImage {   /*add border underneath banh mi picture and format*/
+#seisImage {   /*add border underneath article 6 picture and format*/
     border-bottom: solid black;
     border-width: thin;
     
