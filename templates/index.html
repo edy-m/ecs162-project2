@@ -95,7 +95,8 @@
                         (https://developer.nytimes.com/docs/articlesearch-product/1/types/Article)
                         -->
 
-                    <!-- js script that fetches info from the nyt using their search api
+                    <!-- js script that fetches info from the nyt using their search api,
+                        nested fetch call the first one extracts apiKey so it isnt exposed then appends to form full url
                         the nyt search api uses the "sacramento" filter to get local stories
                         also uses our given api search key 
                         fetches search data, parses data to extract first article (data.response.docs[0]),
